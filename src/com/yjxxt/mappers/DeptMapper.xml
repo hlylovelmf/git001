@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace : 命名空间
+        定义SQL映射文件的唯一
+        要求: 一个项目中不能重复
+        定义: 任意定义
+              建议: 包名.文件名 (不加后缀)
+
+-->
+<mapper namespace="com.yjxxt.mappers.DeptMapper">
+    <!--
+        select 相当于一个处理块
+            id : 一个命名空间中sql语句的唯一标识
+                 在一个命名空间中id属性不能重复
+                 见名知意
+           resultType : 结果类型
+                java中某个类型的名字
+                List集合,需要定义集合的泛型类型
+
+           parameterType : 入参类型
+    -->
+    <select id="queryAll" resultType="Dept">
+        select * from dept
+    </select>
+</mapper>

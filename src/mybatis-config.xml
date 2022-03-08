@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--根元素-->
+<configuration>
+    <!-- 加载外部的properties文件 -->
+    <properties resource="db.properties" />
+
+    <!--为类型定义别名-->
+    <typeAliases>
+        <!--alias 设置别名-->
+        <!--<typeAlias type="com.yjxxt.pojo.Dept" alias="Dept"/>-->
+        <!--没有定义alias属性,默认别名为类型,不缺分大小写-->
+        <!--<typeAlias type="com.yjxxt.pojo.Dept"/>-->
+        <!--设置一个包下所有的类型定义别名,别名默认类名,不区分大小写-->
+        <package name="com.yjxxt.pojo"/>
+    </typeAliases>
+
+    <!--
+        mybatis使用环境配置
+        default : 选择要使用的环境
+                  属性值定义为环境的id值
+    -->
+    <environments default="dev">
+        <!--environment 定义环境配置    id : 环境的唯一标识-->
+        <environment id="dev">
+            <!--transactionManager事务管理机制 : type="JDBC"选择使用JDBC项目的事务管理机制-->
+            <transactionManager type="JDBC"/>
+            <!--dataSource : 数据源配置|是否使用来连接池技术-->
+            <!--type="POOLED" 使用连接池结束-->
+            <dataSource type="POOLED">
+                <!--定义数据库的连接参数-->
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--扫描SQL映射文件-->
+    <mappers>
+        <!--一个SQL映射文件的加载 : resource指定SQL映射文件在项目中的路径-->
+        <mapper resource="com/yjxxt/mappers/DeptMapper.xml"/>
+        <mapper resource="com/yjxxt/mappers/EmpMapper.xml"/>
+    </mappers>
+</configuration>

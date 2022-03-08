@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    测试查询
+-->
+<mapper namespace="com.yjxxt.mappers.EmpMapper">
+    <!--
+       根据员工编号查询员工信息
+    -->
+    <select id="queryEmpByNo" resultType="Emp" parameterType="int">
+        select * from emp where empno = #{empno}
+    </select>
+
+    <select id="queryEmpByDeptno" resultType="Emp" parameterType="int">
+        select * from emp where deptno = #{id}
+    </select>
+</mapper>
